@@ -1,0 +1,13 @@
+
+
+; RUN: %souper-check -souper-use-alive %s > %t 2>&1
+; RUN: %FileCheck %s < %t
+; RUN: %souper-check %s > %t 2>&1
+; RUN: %FileCheck %s < %t
+
+; CHECK: LGTM
+
+%0:i64 = var
+%1:i32 = trunc %0
+%2:i32 = shl 2:i32, %1
+cand %2 4:i32 (demandedBits=00000000000000000000000000000001)

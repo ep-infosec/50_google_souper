@@ -1,0 +1,7 @@
+
+; RUN: %souper-check -infer-power-two %s | %FileCheck %s
+
+; CHECK: powerOfTwo from souper:   true
+
+%0:i8 = var (range=[1,3))
+infer %0

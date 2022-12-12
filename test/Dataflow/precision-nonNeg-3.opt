@@ -1,0 +1,11 @@
+
+; RUN: %souper-check -infer-non-neg %s | %FileCheck %s
+
+; CHECK: nonNegative from souper:   true
+
+%0:i64 = var (range=[1,-9223372036854775808))
+%1:i64 = var (range=[1,0))
+%2:i1 = ult %1, %0
+%3:i64 = select %2, %1, %0
+%4:i64 = subnsw %0, %3
+infer %4

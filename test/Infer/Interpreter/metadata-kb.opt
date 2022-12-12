@@ -1,0 +1,12 @@
+
+
+; RUN: %souper-interpret %s > %t 2>&1
+; RUN: %FileCheck %s < %t
+
+; CHECK: KnownBits result:
+; CHECK-NEXT: 1???1??1
+
+%0:i8 = reservedconst (knownBits=1xxx1xx1)
+%1:i8 = hole
+%2 = or %0, %1
+infer %2

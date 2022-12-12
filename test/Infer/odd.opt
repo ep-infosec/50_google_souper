@@ -1,0 +1,14 @@
+
+
+; Enumerative search does not support this test, since we're not supporting urem
+
+; RUN: %souper-check %s | %FileCheck %s
+; CHECK: LGTM
+
+%0:i32 = var
+%1:i32 = urem %0, 2
+%2:i1 = eq %1, 1
+infer %2
+
+%3:i1 = trunc %0
+result %3

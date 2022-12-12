@@ -1,0 +1,10 @@
+
+; RUN: %souper-check -infer-range %s | %FileCheck %s
+
+; CHECK: range from souper: [0,53)
+
+%0:i32 = var
+%1:i1 = ult %0, 53:i32
+pc %1 1:i1
+%2:i64 = zext %0
+infer %2

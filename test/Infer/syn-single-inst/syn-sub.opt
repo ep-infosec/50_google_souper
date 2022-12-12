@@ -1,0 +1,11 @@
+; REQUIRES: synthesis
+; RUN: %souper-check -infer-rhs -souper-enumerative-synthesis-max-instructions=1 -souper-double-check %s > %t1
+; RUN: %FileCheck %s < %t1
+; CHECK: sub %1, %0
+
+%0:i8 = var
+%1:i8 = var
+%2:i8 = add %1, 10:i8
+%3:i8 = sub %2, 10:i8
+%4:i8 = sub %3, %0
+infer %4

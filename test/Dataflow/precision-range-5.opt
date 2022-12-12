@@ -1,0 +1,8 @@
+
+; RUN: %souper-check -infer-range %s | %FileCheck %s
+
+; CHECK: range from souper: [1,0)
+
+%0:i8 = var
+%1:i8 = addnuw 1:i8, %0
+infer %1

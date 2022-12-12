@@ -1,0 +1,13 @@
+
+
+; RUN: %souper-check %s > %t 2>&1
+; RUN: %FileCheck %s < %t
+
+; CHECK: LGTM
+
+%0:i64 = var
+%1:i64 = var
+%2 = addnsw %0, %1
+infer %2
+%3 = add %0, %1
+result %3

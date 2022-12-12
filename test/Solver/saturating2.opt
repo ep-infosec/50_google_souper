@@ -1,0 +1,12 @@
+
+; RUN: %souper-check %s | %FileCheck %s
+
+; CHECK: LGTM
+
+%x:i8 = var
+%y:i8 = var
+%z = ssub.sat %x, %y
+pc %y 0
+infer %z
+%res = subnsw %x, %y
+result %res

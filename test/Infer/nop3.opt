@@ -1,0 +1,12 @@
+
+; RUN: %souper-check -infer-rhs -souper-enumerative-synthesis-max-instructions=1 %s > %t1
+; RUN: %FileCheck %s < %t1
+
+; CHECK: %5:i32 = add 1:i32, %a
+
+%a:i32 = var
+%b:i32 = var
+%0 = add %a, %b
+%1 = sub %0, %b
+%2 = add %1, 1
+infer %2

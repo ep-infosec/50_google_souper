@@ -1,0 +1,10 @@
+
+; RUN: %souper-check -infer-rhs %s > %t1
+; RUN: %FileCheck %s < %t1
+; CHECK: result %a
+
+%a:i32 = var
+%b:i32 = var
+%0 = add %a, %b
+%1 = sub %0, %b
+infer %1

@@ -1,0 +1,17 @@
+
+
+; RUN: %souper-check -infer-rhs -souper-use-cegis -souper-synthesis-comps=const %s > %t1
+; RUN: %souper-check -infer-rhs -souper-use-cegis %s > %t2
+; RUN: %FileCheck %s < %t1
+; RUN: %FileCheck %s < %t2
+
+; CHECK: result 0:i8
+
+%0:i8 = var
+%1:i8 = var
+%2:i1 = eq %0, %1
+pc %2 1:i1
+%3:i8 = addnsw 1:i8, %0
+%4:i8 = addnsw 1:i8, %1
+%5:i8 = subnsw %3, %4
+infer %5

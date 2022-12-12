@@ -1,0 +1,8 @@
+
+; RUN: %souper-check -infer-demanded-bits %s | %FileCheck %s
+
+; CHECK: demanded-bits from souper for %0 : 10000000
+
+%0:i8 = var
+%1:i1 = slt %0, 0:i8
+infer %1
